@@ -1,0 +1,31 @@
+
+#### create model performance index ####
+curl -X DELETE "localhost:9200/a1"; echo
+curl -XPUT 'localhost:9200/a1'; echo
+curl -XPUT 'localhost:9200/a1/_mapping/AUC' -H 'Content-Type: application/json' -d '{ "properties": { "ts":    { "type": "date", "format":"yyyy-MM-dd HH:mm:ss"   }, "result":    { "type": "float"  } } }' ; echo
+
+#### create event index ###
+curl -X DELETE "localhost:9200/a2"; echo
+curl -XPUT 'localhost:9200/a2'; echo
+curl -XPUT 'localhost:9200/a2/_mapping/alert' -H 'Content-Type: application/json' -d '{ "properties": { "ts":    { "type": "date", "format":"yyyy-MM-dd HH:mm:ss"   }  } }' ; echo
+
+#### create kmeans MSE index ###
+curl -X DELETE "localhost:9200/b1"; echo
+curl -XPUT 'localhost:9200/b1'; echo
+curl -XPUT 'localhost:9200/b1/_mapping/mse' -H 'Content-Type: application/json' -d '{ "properties": { "ts":    { "type": "date", "format":"yyyy-MM-dd HH:mm:ss"   }, "result":    { "type": "float"  } } }' ; echo
+
+#### create raw data indices ####
+curl -X DELETE "localhost:9200/c1"; echo
+curl -X DELETE "localhost:9200/c2"; echo
+curl -X DELETE "localhost:9200/c3"; echo
+curl -X DELETE "localhost:9200/c4"; echo
+curl -XPUT 'localhost:9200/c1'; echo
+curl -XPUT 'localhost:9200/c2'; echo
+curl -XPUT 'localhost:9200/c3'; echo
+curl -XPUT 'localhost:9200/c4'; echo
+curl -XPUT 'localhost:9200/c1/_mapping/raw' -H 'Content-Type: application/json' -d '{ "properties": { "ts":    { "type": "date", "format":"yyyy-MM-dd HH:mm:ss"   }, "result":    { "type": "float"  } } }' ; echo
+curl -XPUT 'localhost:9200/c2/_mapping/raw' -H 'Content-Type: application/json' -d '{ "properties": { "ts":    { "type": "date", "format":"yyyy-MM-dd HH:mm:ss"   }, "result":    { "type": "float"  } } }' ; echo
+curl -XPUT 'localhost:9200/c3/_mapping/raw' -H 'Content-Type: application/json' -d '{ "properties": { "ts":    { "type": "date", "format":"yyyy-MM-dd HH:mm:ss"   }, "result":    { "type": "float"  } } }' ; echo
+curl -XPUT 'localhost:9200/c4/_mapping/raw' -H 'Content-Type: application/json' -d '{ "properties": { "ts":    { "type": "date", "format":"yyyy-MM-dd HH:mm:ss"   }, "result":    { "type": "float"  } } }' ; echo
+
+
